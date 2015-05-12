@@ -13,8 +13,8 @@ import javax.swing.Timer;
 
 public class Game extends JPanel implements ActionListener {
 
-	private double speed = 7;
-	private int ACCELERATION = 1;
+	private double speed = 9;
+	private double ACCELERATION = .55;
 	private Bird flappy;
 	private Pipes[] pipes;
 	private Timer t;
@@ -38,7 +38,7 @@ public class Game extends JPanel implements ActionListener {
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				speed = -9;
+				speed = -7;
 			}
 		});
 	
@@ -97,10 +97,7 @@ public class Game extends JPanel implements ActionListener {
 
 	}
 
-	/**
-	 * Getter of value score
-	 * @return
-	 */
+
 	public static int getScore() {
 		return score;
 	}
