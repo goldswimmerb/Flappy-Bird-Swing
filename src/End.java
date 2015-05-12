@@ -14,20 +14,24 @@ public class End extends JFrame {
 
 
 	public End(String string) {
-		setSize(175, 150);
+		HighscoreManager hm = new HighscoreManager();
+
+		setSize(300, 400);
 		setLocation(100, 100);
 		setResizable(false);
 		JPanel panel = new JPanel(new BorderLayout());
 		setContentPane(panel);
 		JTextArea txt = new JTextArea();
-		txt.setText("GAME OVER\nYour score is: " + Game.getScore());
+		hm.addScore("Player", Game.getScore());
+		txt.setText("GAME OVER\nYour score is: " + Game.getScore() + "\n" + "High Scores: " + 
+		"\n" + hm.getHighscoreString());
 		txt.setEditable(false);
 		panel.add(txt, BorderLayout.NORTH);
        
-		HighscoreManager hm = new HighscoreManager();
-        hm.addScore("Player", Game.getScore());
+       
 
-        System.out.print(hm.getHighscoreString());
+
+        //System.out.print(hm.getHighscoreString());
     
 
 

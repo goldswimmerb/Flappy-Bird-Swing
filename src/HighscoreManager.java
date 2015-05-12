@@ -1,5 +1,7 @@
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.io.*;
 
@@ -7,12 +9,13 @@ public class HighscoreManager {
     
     private ArrayList<Score> scores;
 
-    
+    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     private static final String HIGHSCORE_FILE = "scores.dat";
 
   
     ObjectOutputStream outputStream = null;
     ObjectInputStream inputStream = null;
+    Date date = new Date();
 
     public HighscoreManager() {
         
@@ -86,7 +89,7 @@ public class HighscoreManager {
             x = max;
         }
         while (i < x) {
-            highscoreString += (i + 1) + ".\t" + scores.get(i).getNaam() + "\t\t" + scores.get(i).getScore() + "\n";
+            highscoreString += (i + 1) + ".\t" + scores.get(i).getNaam() + "\t\t"+ scores.get(i).getScore() + "\n";
             i++;
         }
         return highscoreString;
