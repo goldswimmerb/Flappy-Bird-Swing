@@ -35,7 +35,7 @@ public class Pipes {
 		g.fillRect(x, height + 125, width, height + 300);
 		g.setColor(Color.BLACK);
 		g.drawRect(x,y-5,width, height+5);
-		g.drawRect(x, height + 125, width, height+125);
+		g.drawRect(x, height + 125, width, height+300);
 	}
 
 

@@ -24,6 +24,8 @@ public class Bird {
 	public void draw(Graphics g) {
 		g.setColor(color);
 		g.fillOval(x, y, width, height);
+		g.setColor(Color.BLACK);
+		g.drawOval(x,y,width,height);
 	}
 
 	public boolean isEnd() {

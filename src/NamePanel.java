@@ -47,11 +47,17 @@ public class NamePanel extends JFrame implements ActionListener, FocusListener {
 	@Override
 	public void actionPerformed(ActionEvent e){
 		if(e.getSource().equals(button)||e.getSource().equals(field)){
+			if(field.getText().equals("")){
+				field.setText("Anonymous");
+				hm.addScore(field.getText(), Game.getScore());
+				new End("Game Over");
+				setVisible(false);
+			}else{
 			hm.addScore(field.getText(), Game.getScore());
 			
 			new End("Game Over");
 			setVisible(false);
-			
+			}
 		}
 	}
 	@Override
