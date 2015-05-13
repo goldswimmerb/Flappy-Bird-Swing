@@ -31,7 +31,11 @@ public class Pipes {
 	public void draw(Graphics g) {
 		g.setColor(Color.ORANGE);
 		g.fillRect(x, y, width, height);
+		
 		g.fillRect(x, height + 125, width, height + 300);
+		g.setColor(Color.BLACK);
+		g.drawRect(x,y-5,width, height+5);
+		g.drawRect(x, height + 125, width, height+125);
 	}
 
 

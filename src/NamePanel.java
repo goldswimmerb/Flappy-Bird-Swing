@@ -17,6 +17,8 @@ public class NamePanel extends JFrame implements ActionListener, FocusListener {
 	JTextField field;
 	JButton button;
 	JLabel label;
+	JLabel label1;
+	JLabel scores;
 	
 	public NamePanel(){
 		initFrame();
@@ -24,12 +26,16 @@ public class NamePanel extends JFrame implements ActionListener, FocusListener {
 	private void initFrame(){
 		main = new JPanel();
 		label = new JLabel("Game Over");
+		//label1 = new JLabel("Place Name Below:");
 		field = new JTextField("Put Name Here");
+		scores = new JLabel("Your Score: " + Game.getScore());
 		button = new JButton("Submit");
 		field.addActionListener(this);
 		button.addActionListener(this);
 		main.setLayout(new GridLayout(7,1));
 		main.add(label);
+	//	main.add(label1);
+		main.add(scores);
 		main.add(field);
 		main.add(button);
 		field.addFocusListener(this);
@@ -42,13 +48,15 @@ public class NamePanel extends JFrame implements ActionListener, FocusListener {
 	public void actionPerformed(ActionEvent e){
 		if(e.getSource().equals(button)||e.getSource().equals(field)){
 			hm.addScore(field.getText(), Game.getScore());
-			setVisible(false);
+			
 			new End("Game Over");
+			setVisible(false);
+			
 		}
 	}
 	@Override
 	public void focusGained(FocusEvent e) {
-		if(e.getSource().equals(field)){
+	if(e.getSource().equals(field)){
 			field.setText("");
 		}
 		

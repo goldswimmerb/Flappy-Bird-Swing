@@ -24,7 +24,10 @@ public class End extends JFrame {
 		
 		
 		HighscoreManager hm = new HighscoreManager();
+		//NamePanel lab = new NamePanel();
 		
+		
+		//lab.toFront();
 		
 		setSize(300, 400);
 		setLocation(100, 100);

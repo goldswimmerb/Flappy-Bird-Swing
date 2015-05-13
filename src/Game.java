@@ -18,7 +18,7 @@ public class Game extends JPanel implements ActionListener {
 	private Bird flappy;
 	private Pipes[] pipes;
 	private Timer t;
-	private static int score = 0;
+	static int score = 0;
 	private JLabel label;
 	public Boolean started;
 
@@ -58,6 +58,8 @@ public class Game extends JPanel implements ActionListener {
 
 		g.setColor(Color.GREEN);
 		g.fillRect(0, getHeight() - 70, getWidth(), 75);
+		g.setColor(Color.BLACK);
+		g.drawRect(0, getHeight() - 70, getWidth(), 75);
 	}
 
 
