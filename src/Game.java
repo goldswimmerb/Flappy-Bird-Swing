@@ -98,7 +98,7 @@ public class Game extends JPanel implements ActionListener {
 	}
 
 
-	public static int getScore() {
+	public static  int getScore() {
 		return score;
 	}
 
