@@ -18,9 +18,11 @@ public class End extends JFrame {
 
 	public End(String string) {
 
-		System.out.println("Please Insert Your Name to see HighScores, If your score is higer than a High Score, It will be added accordingly");
-		Scanner scan = new Scanner(System.in);
-		String urmom = scan.nextLine();
+		//System.out.println("Please Insert Your Name to see HighScores, If your score is higer than a High Score, It will be added accordingly");
+		//Scanner scan = new Scanner(System.in);
+		//String urmom = scan.nextLine();
+		
+		
 		HighscoreManager hm = new HighscoreManager();
 		
 		
@@ -30,7 +32,7 @@ public class End extends JFrame {
 		JPanel panel = new JPanel(new BorderLayout());
 		setContentPane(panel);
 		JTextArea txt = new JTextArea();
-		hm.addScore(urmom, Game.getScore());
+		
 		txt.setText("GAME OVER\nYour score is: " + Game.getScore() + "\n" + "High Scores: " + 
 		"\n" + hm.getHighscoreString());
 		txt.setEditable(false);

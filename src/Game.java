@@ -68,13 +68,11 @@ public class Game extends JPanel implements ActionListener {
 		for (Pipes p : pipes) {
 			p.move();
 			if (p.collision(flappy) == true) {
-				t.stop();
-				new End("Game Over!");
+				endgame();
 				return;
 			}
 			if (p.collisionDown(flappy) == true) {
-				t.stop();
-				new End("Game Over!");
+				endgame();
 				return;
 			}
 
@@ -90,14 +88,16 @@ public class Game extends JPanel implements ActionListener {
 		repaint();
 
 		if (flappy.isEnd() == true) {
-			t.stop();
-			new End("Game Over!");
+			endgame();
 			return;
 		}
 
 	}
 
-
+	private void endgame(){
+		t.stop();
+		new NamePanel();
+	}
 	public static  int getScore() {
 		return score;
 	}
