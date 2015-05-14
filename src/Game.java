@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Random;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,6 +18,7 @@ public class Game extends JPanel implements ActionListener {
 	private double ACCELERATION = .55;
 	private Bird flappy;
 	private Pipes[] pipes;
+	private Bonus[] bonus;
 	private Timer t;
 	static int score = 0;
 	private JLabel label;
@@ -24,6 +26,8 @@ public class Game extends JPanel implements ActionListener {
 
 
 	public Game() {
+		//Random random = new Random();
+		//int nextrand = random.nextInt();
 		label = new JLabel("Your score is: " + score);
 		add(label);
 		setBackground(new Color(186, 223, 255));
@@ -32,6 +36,11 @@ public class Game extends JPanel implements ActionListener {
 		Pipes pipe2 = new Pipes(750, 0, 100, (int) (Math.random() * 400 + 100));
 		Pipes pipe3 = new Pipes(1000, 0, 100, (int) (Math.random() * 400 + 100));
 		pipes = new Pipes[] { pipe1, pipe2, pipe3 };
+		
+		Bonus bonus0 = new Bonus(-20, 100, 5,(int) (Math.random() * 40 ));
+	
+		pipes = new Pipes[] { pipe1, pipe2, pipe3 };
+		bonus = new Bonus[] { bonus0};
 		t = new Timer(1000 / 60, this);
 		t.start();
 
@@ -55,6 +64,9 @@ public class Game extends JPanel implements ActionListener {
 		for (Pipes p : pipes) {
 			p.draw(g);
 		}
+		for(Bonus b: bonus){
+			b.draw(g);
+		}
 
 		g.setColor(Color.GREEN);
 		g.fillRect(0, getHeight() - 70, getWidth(), 75);
@@ -66,7 +78,27 @@ public class Game extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		flappy.setY(flappy.getY() + speed);
 		speed += ACCELERATION;
+		for(Bonus b:bonus){
+			b.move();
+			if (b.collision(flappy) == true) {
+				score ++;
+				label.setText("Your score is: " + score);
+			}
+			//if (b.collisionDown(flappy) == true) {
+				//score++;
+				//label.setText("Your score is: " + score);
+			//}
 
+			/*if (b.getX() == -50) {
+				score++;
+				label.setText("Your score is: " + score);
+			}
+			*/
+			if (b.getX() <= -100) {
+				b.setX(650);
+			}
+		}
+		repaint();
 		for (Pipes p : pipes) {
 			p.move();
 			if (p.collision(flappy) == true) {
