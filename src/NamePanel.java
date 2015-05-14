@@ -71,8 +71,10 @@ public class NamePanel extends JFrame implements ActionListener, FocusListener {
 	}
 
 	@Override
-	public void focusLost(FocusEvent arg0) {
-		// TODO Auto-generated method stub
+	public void focusLost(FocusEvent e) {
+		if (e.getSource().equals(field)) {
+			field.setText("Put Name Here");
+		}// TODO Auto-generated method stub
 
 	}
 }
