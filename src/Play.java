@@ -6,6 +6,7 @@ public class Play {
 
 		Game frame = new Game();
 		JFrame window = new JFrame();
+		Music.music();
 		window.setSize(500, 700);
 		window.setLocation(50, 50);
 		window.setContentPane(frame);
