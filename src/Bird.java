@@ -1,16 +1,14 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-
 public class Bird {
-	
+
 	private int x;
 	private int y;
 	private int height;
 	private int width;
 	private Color color;
-	
-	
+
 	public Bird(int x, int y, int width, int height, Color color) {
 		super();
 		this.x = x;
@@ -19,13 +17,12 @@ public class Bird {
 		this.height = height;
 		this.color = color;
 	}
-	
 
 	public void draw(Graphics g) {
 		g.setColor(color);
 		g.fillOval(x, y, width, height);
 		g.setColor(Color.BLACK);
-		g.drawOval(x,y,width,height);
+		g.drawOval(x, y, width, height);
 	}
 
 	public boolean isEnd() {
@@ -34,22 +31,18 @@ public class Bird {
 		}
 		return false;
 	}
-	
 
 	public int getHeight() {
 		return height;
 	}
 
-
 	public int getWidth() {
 		return width;
-	}	
-
+	}
 
 	public int getX() {
 		return x;
 	}
-	
 
 	public int getY() {
 		return y;
@@ -58,7 +51,5 @@ public class Bird {
 	public void setY(double d) {
 		this.y = (int) d;
 	}
-
-
 
 }
