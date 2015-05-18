@@ -43,6 +43,7 @@ public class NamePanel extends JFrame implements ActionListener, FocusListener {
 		pack();
 		setLocationRelativeTo(null);
 		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	@Override
