@@ -20,6 +20,7 @@ public class Game extends JPanel implements ActionListener {
 	static int score = 0;
 	private JLabel label;
 	public Boolean started;
+	private int loading = 0; //counter to help delay time so user has a chance to be ready to play
 
 	// Set to true to stop collisions !!!
 	private Boolean debugMode = false;
@@ -70,56 +71,63 @@ public class Game extends JPanel implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		flappy.setY(flappy.getY() + speed);
-		speed += ACCELERATION;
-		for (Bonus b : bonus) {
-			b.move();
-			if (b.isColliding(flappy) == true) {
-				score++;
-				System.out.println("bonus");
-				label.setText("Your score is: " + score);
-			}
-			// if (b.collisionDown(flappy) == true) {
-			// score++;
-			// label.setText("Your score is: " + score);
-			// }
-
-			/*
-			 * if (b.getX() == -50) { score++; label.setText("Your score is: " +
-			 * score); }
-			 */
-			if (b.getX() <= -100) {
-				b.setX(650);
-			}
+		if (loading<50){ //loading allows time for user to be ready to play (creates a delay)
+			loading+=1;
 		}
-		repaint();
-		for (Pipes p : pipes) {
-			p.move();
-			if (p.collision(flappy) == true) {
-				endgame();
-				return;
+
+		else{
+			flappy.setY(flappy.getY() + speed);
+			speed += ACCELERATION;
+			for (Bonus b : bonus) {
+				b.move();
+				if (b.isColliding(flappy) == true) {
+					score++;
+					System.out.println("bonus");
+					label.setText("Your score is: " + score);
+				}
+				// if (b.collisionDown(flappy) == true) {
+				// score++;
+				// label.setText("Your score is: " + score);
+				// }
+
+				/*
+				 * if (b.getX() == -50) { score++; label.setText("Your score is: " +
+				 * score); }
+				 */
+				if (b.getX() <= -100) {
+					b.setX(650);
+				}
 			}
-			if (!debugMode) {
-				if (p.collisionDown(flappy) == true) {
+			repaint();
+			for (Pipes p : pipes) {
+				p.move();
+				if (p.collision(flappy) == true) {
 					endgame();
 					return;
 				}
+				if (!debugMode) {
+					if (p.collisionDown(flappy) == true) {
+						endgame();
+						return;
+					}
 
-				if (p.getX() == -50) {
-					score++;
-					label.setText("Your score is: " + score);
-				}
-				if (p.getX() <= -100) {
-					p.setX(650);
+					if (p.getX() == -50) {
+						score++;
+						label.setText("Your score is: " + score);
+					}
+					if (p.getX() <= -100) {
+						p.setX(650);
+					}
 				}
 			}
-		}
 
-		repaint();
+			repaint();
 
-		if (flappy.isEnd() == true) {
-			endgame();
-			return;
+			if (flappy.isEnd() == true) {
+				endgame();
+				return;
+			}
+
 		}
 
 	}
